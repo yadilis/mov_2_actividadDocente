@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 
 export default function Pagina1Screen() {
   const [nombre, setNombre] = useState("")
-  const [edad, setEdad] = useState(0)
+  const [edad, setEdad] = useState("")
   const [ciudad, setCiudad] = useState("")
 
   function datosAlert(){
-    Alert.alert("Mensaje", "El nombre del usuario es: "+ nombre)
-    setNombre("")
+    Alert.alert("Mensaje", nombre+ " es de "+ ciudad+ " y tiene "+ edad +" años.");
+    setNombre(""); setEdad(""); setCiudad("");
   }
 
 
@@ -23,7 +23,7 @@ export default function Pagina1Screen() {
           placeholderTextColor={'white'}
           style={styles.input}
           onChangeText={ (texto)=> setNombre(texto) }
-          value= {nombre}
+          value={ nombre }
         />
 
         <TextInput
@@ -31,12 +31,15 @@ export default function Pagina1Screen() {
           style={styles.input}
           placeholderTextColor={'white'}
           keyboardType='numeric'
+          onChangeText={ (texto)=> setEdad( texto )}
+          value={ edad }
         />
 
         <TextInput
           placeholder='INGRESAR CIUDAD'
           style={styles.input}
           placeholderTextColor={'white'}
+          onChangeText={ (texto)=> setCiudad(texto)}
         />
 
         <Button 
